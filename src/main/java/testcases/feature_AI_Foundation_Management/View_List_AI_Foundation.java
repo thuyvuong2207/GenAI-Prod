@@ -9,7 +9,6 @@ import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
-import java.lang.reflect.Method;
 
 public class View_List_AI_Foundation extends BaseTest {
 

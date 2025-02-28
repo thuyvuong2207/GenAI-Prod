@@ -60,7 +60,7 @@ public class HomePage extends BasePageFactory {
         this.driver = driver;
     }
 
-    public boolean isTabDashboardVisible() {
+    public boolean isTabHomeVisible() {
         return sidebarHome.isDisplayed();
     }
     public boolean isTabWorkflowVisible() {

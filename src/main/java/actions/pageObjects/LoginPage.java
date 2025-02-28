@@ -52,6 +52,10 @@ public class LoginPage extends BasePageFactory {
     public boolean isLoginButtonVisible() {
         return loginButton.isDisplayed();
     }
+    public void clearLoginEmail(){
+        waitForElementVisible(driver, loginEmailInput);
+        loginEmailInput.clear();
+    }
     public void inputLoginEmail(String inputValue){
         waitForElementVisible(driver, loginEmailInput);
         loginEmailInput.sendKeys(inputValue);
