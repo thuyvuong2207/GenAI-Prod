@@ -1,0 +1,1 @@
+{"uuid":"0eea6001-0b72-403d-b687-221febf0c39e","name":"GenAI-Prod","children":["20037282-aa50-4cf2-a64e-13b206caab26"],"befores":[],"afters":[{"name":"afterTest","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1740730865146,"stop":1740730866423}],"links":[],"start":1740730831394,"stop":1740730866424}

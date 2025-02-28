@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Selected PBI on selected cross-browsers">
+
+    <test name="Run on Chrome">
+        <parameter name="browserName" value="chrome"/>
+        <classes>
+            <class name="testcases.feature_AI_Foundation_Management.View_List_AI_Foundation"/>
+        </classes>
+    </test>
+    <listeners>
+        <listener  class-name="actions.reportConfig.TestListeners" />
+    </listeners>
+</suite>
