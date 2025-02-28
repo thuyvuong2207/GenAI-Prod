@@ -6,6 +6,7 @@ import actions.pageObjects.HomePage;
 import actions.pageObjects.LoginPage;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
@@ -14,52 +15,35 @@ public class Register extends BaseTest {
     private WebDriver driver;
     private LoginPage loginPage;
     private HomePage homePage;
-    String errorEmailMsg = "Email doesn’t exist";
-    String validEmail = "thuyvm@taureau.ai";
 
     @Parameters("browser")
     @BeforeClass
     public void beforeClass() {
         driver = getBrowserDriver("chrome");
         loginPage = PageGeneratorManager.getLoginPage(driver);
-        loginPage.openPageURL(driver, "https://genai.taureau.ai/login");
         createReport();
     }
 
     @Test
-    public void BR1_Login_Local_Invalid_Email() {
-        // Step: Input invalid email
-        // Verify field password undisplayed
-        // Verify button state unclickable and alert display upon onclick
+    public void Register_Success() {
+        // Step: Onclick button Register on Login page
+        // Verify field displayed for Email input
+        // Input Email and go to next page
+        // Open yopmail on new tab and get code
+        // Go tab to prev tab and input code, password
+        // Verify login with successfully registered account
 
         loginPage.inputLoginEmail("thuyvm+error@taureau.ai");
         Assert.assertTrue(loginPage.isLoginButtonVisible());
         loginPage.clickLoginButton();
         Assert.assertFalse(loginPage.isPasswordFieldDisplayed());
         Assert.assertTrue(loginPage.isEmailAlertMsgDisplayed());
-        Assert.assertEquals(loginPage.getEmailAlertMsgText(),errorEmailMsg);
-//        homePage = loginPage.clickLoginButton();
+        Assert.assertEquals(loginPage.getEmailAlertMsgText());
     }
 
-    @Test
-    public void BR1_Login_Local_Invalid_Password() {
-        // Step: Input valid email
-        // Onclick button Continue
-        // Input invalid password length (under 8 chars). Verify alert.
-        // Input invalid password (valid length but incorrect). Verify alert.
-        // Verify button state unclickable and alert display upon onclick.
-        loginPage.inputLoginEmail(validEmail);
-        Assert.assertTrue(loginPage.isLoginButtonVisible());
+    @AfterClass
+    public void afterClass() {
+        driver.quit();
+        extent.flush();
     }
-
-    @Test
-    public void BR1_Login_Local_Success() {
-        // Step:
-        // Login with valid credentials
-        // Verify account info displayed
-
-    }
-
-
-
 }

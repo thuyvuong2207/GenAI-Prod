@@ -12,7 +12,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-public class Login_Local extends BaseTest {
+public class Login_Logout extends BaseTest {
     private WebDriver driver;
     private LoginPage loginPage;
     private HomePage homePage;
@@ -57,7 +57,7 @@ public class Login_Local extends BaseTest {
     }
 
     @Test
-    public void BR1_Login_Local_Success() {
+    public void BR1_Login_Logout_Local_Success() {
         // Step:
         // Login with valid credentials
         // Verify account info displayed
@@ -72,11 +72,11 @@ public class Login_Local extends BaseTest {
         homePage.clickUserAccountButton(driver);
         userProfilePage = homePage.clickUserSettings();
         Assert.assertEquals(userProfilePage.getUserAccountNameText(),validEmail.replace("@yopmail.com", ""));
+
     }
     @AfterClass
-    public void afterTest() {
+    public void afterClass() {
         driver.quit();
         extent.flush();
     }
-
 }

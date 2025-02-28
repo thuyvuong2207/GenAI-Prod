@@ -24,6 +24,8 @@ public class UserProfilePage extends BasePageFactory {
     private WebElement userNameOnAccountModal;
     @FindBy(xpath = "//div[contains(@id,'headlessui-popover-panel')]//div[contains(@class,'avatar')]//following-sibling::div//div")
     private WebElement userEmailOnAccountModal;
+    @FindBy(xpath = "//div[contains(@class,'logout-header') and contains(@class,'cursor-pointer')]")
+    private WebElement userLogoutButtonOnAccountModal;
 
     WebDriver driver;
 
@@ -77,6 +79,11 @@ public class UserProfilePage extends BasePageFactory {
     public void clickUserAccountButton(WebDriver driver) {
         waitForElementClickable(driver, userAccountButtonOnHeader);
         setAttributeInDOM(driver, userAccountButtonOnHeader, "data-headlessui-state", "open active");
+    }
+    public LoginPage clickLogoutButton(){
+        waitForElementVisible(driver, userLogoutButtonOnAccountModal);
+        userLogoutButtonOnAccountModal.click();
+        return PageGeneratorManager.getLoginPage(driver);
     }
 
     public String getUserAccountNameTextOnModal() {
