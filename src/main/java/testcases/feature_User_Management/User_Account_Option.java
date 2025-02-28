@@ -18,15 +18,14 @@ public class User_Account_Option extends BaseTest {
     private UserPricingPage userPricingPage;
 
     private HomePage homePage;
-    String expectedAccountName = "Thuylongnamecheck123 @#$%!^&*()_+{}][|\\\":;'?><,.";
-    String expectedEmail = "thuyvm@taureau.ai";
+    String expectedAccountName = "test_demo";
+    String expectedEmail = "test_demo@yopmail.com";
 
     @Parameters("browser")
     @BeforeClass
     public void beforeClass() {
         driver = getBrowserDriver("chrome");
         loginPage = PageGeneratorManager.getLoginPage(driver);
-        loginPage.openPageURL(driver, "https://genai.taureau.ai/login");
         loginPage.inputLoginEmail("test_demo@yopmail.com");
         loginPage.clickLoginButton();
         loginPage.inputLoginPassword("Taureau2132@");

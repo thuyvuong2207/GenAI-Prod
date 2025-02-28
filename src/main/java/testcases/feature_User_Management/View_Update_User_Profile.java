@@ -18,16 +18,15 @@ public class View_Update_User_Profile extends BaseTest {
     private LoginPage loginPage;
     private UserProfilePage userProfilePage;
     private HomePage homePage;
-    String expectedAccountName = "Thuylongnamecheck123 @#$%!^&*()_+{}][|\\\":;'?><,.";
-    String expectedEmail = "thuyvm@taureau.ai";
+    String expectedAccountName = "test_demo";
+    String expectedEmail = "test_demo@yopmail.com";
 
 
-    @Parameters("browserName")
+    @Parameters("browser")
     @BeforeClass
-    public void beforeClass(String browserName) {
-        driver = getBrowserDriver(browserName);
+    public void beforeClass() {
+        driver = getBrowserDriver("chrome");
         loginPage = PageGeneratorManager.getLoginPage(driver);
-        loginPage.openPageURL(driver, "https://genai.taureau.ai/login");
         loginPage.inputLoginEmail("test_demo@yopmail.com");
         loginPage.clickLoginButton();
         loginPage.inputLoginPassword("Taureau2132@");
@@ -37,14 +36,14 @@ public class View_Update_User_Profile extends BaseTest {
     }
 
     @Test
-    public void Change_User_Name_And_Save(Method method) {
+    public void Change_User_Name_And_Save() {
         // Step:
         // Login. Onclick User avatar and onclick Settings
         // On Profile setting page, change username and save
         // Verify info on page and on modal user account
         // Reset name back to default name
 
-        ExtentTestManager.startTest(method.getName(), "TC_Change_User_Name_And_Save");
+        ExtentTestManager.startTest(log.getName(), "TC_Change_User_Name_And_Save");
         ExtentTestManager.getTest().log(Status.INFO, "Starting TC");
         homePage.clickUserAccountButton(driver);
         userProfilePage = homePage.clickUserSettings();
@@ -76,14 +75,14 @@ public class View_Update_User_Profile extends BaseTest {
     }
 
     @Test
-    public void Change_User_Name_Not_Save_Then_Back(Method method) {
+    public void Change_User_Name_Not_Save_Then_Back() {
         // Step:
         // Login. Onclick User avatar and onclick Settings
         // On Profile setting page, change username and not save
         // Onclick Back button
         // Open Profile setting page again. Verify info not change.
 
-        ExtentTestManager.startTest(method.getName(), "TC_Change_User_Name_And_Not_Save");
+        ExtentTestManager.startTest(log.getName(), "TC_Change_User_Name_And_Not_Save");
         ExtentTestManager.getTest().log(Status.INFO, "Starting TC");
         homePage.clickUserAccountButton(driver);
         userProfilePage = homePage.clickUserSettings();
@@ -114,8 +113,8 @@ public class View_Update_User_Profile extends BaseTest {
         userProfilePage.clickButtonSave();
         Assert.assertEquals(userProfilePage.getUserAccountNameText(),expectedAccountName);
     }
-    @AfterTest
-    public void afterTest() {
+    @AfterClass
+    public void afterClass() {
         driver.quit();
         extent.flush();
     }

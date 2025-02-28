@@ -36,7 +36,6 @@ public class LoginPage extends BasePageFactory {
     public boolean isPasswordFieldDisplayed(){
         return loginPasswordInput.isDisplayed();
     }
-
     public String getLoginPageTitle() {
         return getPageTitle(driver);
     }
